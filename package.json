@@ -20,6 +20,7 @@
     "docker:logs": "docker compose logs -f"
   },
   "devDependencies": {
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vercel": "^65.12.1"
   }
 }

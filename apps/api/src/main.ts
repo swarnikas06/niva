@@ -1,21 +1,20 @@
 import { NestFactory } from '@nestjs/core';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { GlobalHttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import cookieParser from 'cookie-parser';
+import express, { Request, Response } from 'express';
+import { ExpressAdapter } from '@nestjs/platform-express';
 
-async function bootstrap() {
-  const logger = new Logger('Bootstrap');
-  const app = await NestFactory.create(AppModule);
+let cachedApp: INestApplication | null = null;
+let expressInstance: any = null;
 
+async function configureApp(app: INestApplication) {
   const configService = app.get(ConfigService);
   const isProd = configService.get<string>('NODE_ENV') === 'production';
-  const port =
-    configService.get<number>('PORT') ||
-    configService.get<number>('API_PORT', 4000);
   const corsOrigins = configService.get<string>(
     'CORS_ALLOWED_ORIGINS',
     'http://localhost:3000',
@@ -62,10 +61,8 @@ async function bootstrap() {
   }
 
   // Reverse Proxy Configuration
-  if (isProd || configService.get<string>('TRUST_PROXY') === '1') {
-    const expressApp = app.getHttpAdapter().getInstance();
-    expressApp.set('trust proxy', 1);
-  }
+  const expressApp = app.getHttpAdapter().getInstance();
+  expressApp.set('trust proxy', 1);
 
   // HTTP Security Headers
   app.use((_req: any, res: any, next: any) => {
@@ -110,6 +107,9 @@ async function bootstrap() {
 
   // Swagger / OpenAPI 3.0 Documentation Setup (Development only or explicit opt-in)
   if (!isProd || configService.get<string>('ENABLE_SWAGGER') === 'true') {
+    const port =
+      configService.get<number>('PORT') ||
+      configService.get<number>('API_PORT', 4000);
     const swaggerConfig = new DocumentBuilder()
       .setTitle('NIVA API')
       .setDescription('NIVA Core Backend API specification')
@@ -121,11 +121,41 @@ async function bootstrap() {
 
     const document = SwaggerModule.createDocument(app, swaggerConfig);
     SwaggerModule.setup('api-docs', app, document);
+    const logger = new Logger('Bootstrap');
     logger.log(`📚 Swagger documentation available at: http://localhost:${port}/api-docs`);
   }
+}
+
+async function bootstrap() {
+  const logger = new Logger('Bootstrap');
+  const app = await NestFactory.create(AppModule);
+  await configureApp(app);
+
+  const configService = app.get(ConfigService);
+  const port =
+    configService.get<number>('PORT') ||
+    configService.get<number>('API_PORT', 4000);
 
   await app.listen(port);
   logger.log(`🚀 NIVA API is running on: http://localhost:${port}/api/v1`);
 }
 
-bootstrap();
+async function getOrCreateServerlessApp() {
+  if (!cachedApp) {
+    expressInstance = express();
+    const adapter = new ExpressAdapter(expressInstance);
+    cachedApp = await NestFactory.create(AppModule, adapter);
+    await configureApp(cachedApp);
+    await cachedApp.init();
+  }
+  return { app: cachedApp, expressInstance };
+}
+
+export default async function handler(req: Request, res: Response) {
+  const { expressInstance } = await getOrCreateServerlessApp();
+  return expressInstance(req, res);
+}
+
+if (!process.env.VERCEL) {
+  bootstrap();
+}
