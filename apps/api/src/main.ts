@@ -32,7 +32,7 @@ async function configureApp(app: INestApplication) {
   const isProd = configService.get<string>('NODE_ENV') === 'production';
   const corsOrigins = configService.get<string>(
     'CORS_ALLOWED_ORIGINS',
-    'http://localhost:3000',
+    'http://localhost:3000,https://niva-iota.vercel.app',
   );
   const cookieSecret = configService.get<string>(
     'COOKIE_SECRET',
@@ -102,7 +102,16 @@ async function configureApp(app: INestApplication) {
 
   // CORS Configuration
   app.enableCors({
-    origin: corsOrigins.split(',').map((o) => o.trim()),
+    origin: (requestOrigin, callback) => {
+      if (!requestOrigin) return callback(null, true);
+      const allowed = corsOrigins.split(',').map((o) => o.trim()).filter(Boolean);
+      if (allowed.includes(requestOrigin)) return callback(null, true);
+      // Allow Vercel preview and deployment origins matching niva
+      if (/^https:\/\/(niva[a-z0-9-]*|.*-code-54d6s-projects)\.vercel\.app$/.test(requestOrigin)) {
+        return callback(null, true);
+      }
+      callback(new Error(`Origin ${requestOrigin} not allowed by CORS`));
+    },
     credentials: true,
   });
 

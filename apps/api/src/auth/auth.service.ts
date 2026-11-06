@@ -133,10 +133,14 @@ export class AuthService {
   }
 
   getGoogleCallbackUrl(): string {
-    return (
-      this.configService.get<string>('GOOGLE_CALLBACK_URL') ||
-      'http://localhost:4000/api/v1/auth/google/callback'
-    );
+    const configured = this.configService.get<string>('GOOGLE_CALLBACK_URL');
+    if (configured) return configured;
+    const appUrl =
+      this.configService.get<string>('NEXT_PUBLIC_APP_URL') ||
+      this.configService.get<string>('FRONTEND_URL');
+    if (appUrl) return `${appUrl.replace(/\/$/, '')}/api/v1/auth/google/callback`;
+    if (process.env.VERCEL) return 'https://niva-iota.vercel.app/api/v1/auth/google/callback';
+    return 'http://localhost:4000/api/v1/auth/google/callback';
   }
 
   isGoogleOAuthConfigured(): boolean {

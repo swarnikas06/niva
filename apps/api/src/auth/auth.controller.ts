@@ -201,11 +201,19 @@ export class AuthController {
     return { user };
   }
 
+  private getWebUrl(): string {
+    const configured =
+      this.configService.get<string>('NEXT_PUBLIC_APP_URL') ||
+      this.configService.get<string>('FRONTEND_URL');
+    if (configured) return configured.replace(/\/$/, '');
+    if (process.env.VERCEL) return 'https://niva-iota.vercel.app';
+    return 'http://localhost:3000';
+  }
+
   @Get('google')
   @ApiOperation({ summary: 'Initiate Google OAuth flow' })
   async googleLogin(@Res() res: Response) {
-    const webUrl =
-      this.configService.get<string>('NEXT_PUBLIC_APP_URL') || 'http://localhost:3000';
+    const webUrl = this.getWebUrl();
     try {
       const url = await this.authService.getGoogleAuthorizationUrl();
       return res.redirect(url);
@@ -223,8 +231,7 @@ export class AuthController {
     @Req() req: Request,
     @Res() res: Response,
   ) {
-    const webUrl =
-      this.configService.get<string>('NEXT_PUBLIC_APP_URL') || 'http://localhost:3000';
+    const webUrl = this.getWebUrl();
 
     if (error || !code) {
       return res.redirect(`${webUrl}/login?error=oauth_denied`);

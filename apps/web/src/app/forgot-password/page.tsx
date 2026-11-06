@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { NivaIcon } from '@/components/ui/niva-logo';
 import { Input } from '@/components/ui/input';
+import { getApiBase } from '@/lib/auth-client';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -24,8 +25,7 @@ export default function ForgotPasswordPage() {
 
     setIsSubmitting(true);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
-      const res = await fetch(`${apiUrl}/auth/forgot-password`, {
+      const res = await fetch(`${getApiBase()}/auth/forgot-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

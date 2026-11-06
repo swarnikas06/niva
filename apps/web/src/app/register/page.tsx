@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/components/auth/auth-provider';
+import { getApiBase } from '@/lib/auth-client';
 import { Button } from '@/components/ui/button';
 import { NivaIcon } from '@/components/ui/niva-logo';
 import { Input } from '@/components/ui/input';
@@ -58,8 +59,7 @@ export default function RegisterPage() {
   };
 
   const handleGoogleLogin = () => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
-    window.location.href = `${apiUrl}/auth/google`;
+    window.location.href = `${getApiBase()}/auth/google`;
   };
 
   const activeError = localError || authError;

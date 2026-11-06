@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { NivaIcon } from '@/components/ui/niva-logo';
 import { Input } from '@/components/ui/input';
+import { getApiBase } from '@/lib/auth-client';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -52,8 +53,7 @@ export default function ResetPasswordPage() {
 
     setIsSubmitting(true);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
-      const res = await fetch(`${apiUrl}/auth/reset-password`, {
+      const res = await fetch(`${getApiBase()}/auth/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, newPassword }),

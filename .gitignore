@@ -30,7 +30,9 @@ develop-eggs/
 downloads/
 eggs/
 .eggs/
-lib/
+/lib/
+apps/ai/lib/
+!**/src/lib/**
 lib64/
 parts/
 sdist/
