@@ -1,0 +1,57 @@
+# ==============================================================================
+# NIVA — Local Development Infrastructure (Docker Compose)
+# ==============================================================================
+# Services: PostgreSQL 16 + pgvector, Redis 7.2
+
+name: niva
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: niva-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-niva_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-niva_dev_password_local_only}
+      POSTGRES_DB: ${POSTGRES_DB:-niva_db}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infrastructure/docker/init-pgvector.sql:/docker-entrypoint-initdb.d/01-init-pgvector.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-niva_user} -d ${POSTGRES_DB:-niva_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - niva-network
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: niva-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - niva-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  niva-network:
+    driver: bridge

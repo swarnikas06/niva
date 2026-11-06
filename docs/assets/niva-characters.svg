@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="charBgGlow" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0F1722" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#070A0F" stop-opacity="0.98" />
+      <stop offset="100%" stop-color="#040609" stop-opacity="1" />
+    </radialGradient>
+
+    <!-- Card Backgrounds -->
+    <linearGradient id="atlasCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F1E38" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#080F1E" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="miraCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0A2218" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#06120D" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="novaCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#261A08" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#140D04" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="ariaCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1D1236" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0E081F" stop-opacity="0.95" />
+    </linearGradient>
+
+    <pattern id="charGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#FFFFFF" stroke-opacity="0.02" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="440" fill="url(#charBgGlow)" />
+  <rect width="1200" height="440" fill="url(#charGrid)" />
+  <rect width="1198" height="438" x="1" y="1" rx="16" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1.5" />
+
+  <!-- Section Header -->
+  <g transform="translate(60, 40)">
+    <rect width="210" height="24" rx="12" fill="#061E14" stroke="#10B981" stroke-opacity="0.4" stroke-width="1" />
+    <circle cx="12" cy="12" r="3.5" fill="#10B981" />
+    <text x="24" y="16" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#34D399" letter-spacing="1.5">
+      GROUNDED ARCHETYPES
+    </text>
+    
+    <text y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" fill="#FFFFFF">
+      Four Distinct Behavioral Identities
+    </text>
+    <text x="420" y="52" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="400" fill="#94A3B8">
+      Switch companions dynamically per conversation thread while preserving shared cognitive memory.
+    </text>
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- 4 CARDS ROW                                                       -->
+  <!-- ================================================================= -->
+
+  <!-- CARD 1: ATLAS (Sapphire) -->
+  <g transform="translate(60, 110)">
+    <rect width="255" height="290" rx="14" fill="url(#atlasCard)" stroke="#2563EB" stroke-opacity="0.5" stroke-width="1.5" />
+    
+    <!-- Avatar Symbol -->
+    <circle cx="48" cy="46" r="24" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5" />
+    <text x="48" y="53" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#60A5FA">A</text>
+    
+    <!-- Title & Tagline -->
+    <text x="86" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="800" fill="#F8FAFC">ATLAS</text>
+    <text x="86" y="58" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#60A5FA" letter-spacing="0.5">THE STRATEGIC MIND</text>
+
+    <!-- Color Chip -->
+    <rect x="22" y="86" width="211" height="1" fill="#2563EB" fill-opacity="0.3" />
+
+    <!-- Trait Tags -->
+    <g transform="translate(22, 100)">
+      <rect width="98" height="20" rx="4" fill="#1E3A8A" fill-opacity="0.4" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#93C5FD">First Principles</text>
+
+      <rect x="104" width="107" height="20" rx="4" fill="#1E3A8A" fill-opacity="0.4" />
+      <text x="112" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#93C5FD">Systems Strategy</text>
+    </g>
+
+    <!-- Philosophy Quote -->
+    <text x="22" y="148" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1" width="211">
+      "Execution without strategy is
+    </text>
+    <text x="22" y="166" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      noise. Let us define the highest-
+    </text>
+    <text x="22" y="184" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      leverage bottleneck first."
+    </text>
+
+    <!-- Best For Box -->
+    <g transform="translate(22, 210)">
+      <rect width="211" height="64" rx="8" fill="#0A1628" stroke="#1E3A8A" stroke-width="1" />
+      <text x="12" y="20" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#60A5FA">IDEAL ENGAGEMENT</text>
+      <text x="12" y="38" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">Architecture reviews, technical</text>
+      <text x="12" y="52" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">roadmaps &amp; objective analysis.</text>
+    </g>
+  </g>
+
+  <!-- CARD 2: MIRA (Emerald) -->
+  <g transform="translate(335, 110)">
+    <rect width="255" height="290" rx="14" fill="url(#miraCard)" stroke="#059669" stroke-opacity="0.5" stroke-width="1.5" />
+    
+    <!-- Avatar Symbol -->
+    <circle cx="48" cy="46" r="24" fill="#064E3B" stroke="#10B981" stroke-width="1.5" />
+    <text x="48" y="53" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#34D399">M</text>
+    
+    <!-- Title & Tagline -->
+    <text x="86" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="800" fill="#F8FAFC">MIRA</text>
+    <text x="86" y="58" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#34D399" letter-spacing="0.5">THE THOUGHTFUL COMPANION</text>
+
+    <!-- Color Chip -->
+    <rect x="22" y="86" width="211" height="1" fill="#059669" fill-opacity="0.3" />
+
+    <!-- Trait Tags -->
+    <g transform="translate(22, 100)">
+      <rect width="90" height="20" rx="4" fill="#064E3B" fill-opacity="0.4" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#6EE7B7">Equilibrium</text>
+
+      <rect x="96" width="115" height="20" rx="4" fill="#064E3B" fill-opacity="0.4" />
+      <text x="104" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#6EE7B7">Reflective Inquiry</text>
+    </g>
+
+    <!-- Philosophy Quote -->
+    <text x="22" y="148" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      "Clarity emerges when you slow
+    </text>
+    <text x="22" y="166" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      down enough to listen to the
+    </text>
+    <text x="22" y="184" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      underlying questions."
+    </text>
+
+    <!-- Best For Box -->
+    <g transform="translate(22, 210)">
+      <rect width="211" height="64" rx="8" fill="#061810" stroke="#059669" stroke-width="1" />
+      <text x="12" y="20" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#34D399">IDEAL ENGAGEMENT</text>
+      <text x="12" y="38" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">Thoughtful study check-ins,</text>
+      <text x="12" y="52" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">stress de-escalation &amp; reviews.</text>
+    </g>
+  </g>
+
+  <!-- CARD 3: NOVA (Amber) -->
+  <g transform="translate(610, 110)">
+    <rect width="255" height="290" rx="14" fill="url(#novaCard)" stroke="#D97706" stroke-opacity="0.5" stroke-width="1.5" />
+    
+    <!-- Avatar Symbol -->
+    <circle cx="48" cy="46" r="24" fill="#78350F" stroke="#F59E0B" stroke-width="1.5" />
+    <text x="48" y="53" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#FBBF24">N</text>
+    
+    <!-- Title & Tagline -->
+    <text x="86" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="800" fill="#F8FAFC">NOVA</text>
+    <text x="86" y="58" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#FBBF24" letter-spacing="0.5">THE MOMENTUM BUILDER</text>
+
+    <!-- Color Chip -->
+    <rect x="22" y="86" width="211" height="1" fill="#D97706" fill-opacity="0.3" />
+
+    <!-- Trait Tags -->
+    <g transform="translate(22, 100)">
+      <rect width="84" height="20" rx="4" fill="#78350F" fill-opacity="0.4" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#FDE68A">High Velocity</text>
+
+      <rect x="90" width="121" height="20" rx="4" fill="#78350F" fill-opacity="0.4" />
+      <text x="98" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#FDE68A">Overcome Paralysis</text>
+    </g>
+
+    <!-- Philosophy Quote -->
+    <text x="22" y="148" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      "Action creates information.
+    </text>
+    <text x="22" y="166" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      Stop overthinking the first step
+    </text>
+    <text x="22" y="184" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      and let us ship the prototype."
+    </text>
+
+    <!-- Best For Box -->
+    <g transform="translate(22, 210)">
+      <rect width="211" height="64" rx="8" fill="#180F03" stroke="#D97706" stroke-width="1" />
+      <text x="12" y="20" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#FBBF24">IDEAL ENGAGEMENT</text>
+      <text x="12" y="38" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">Sprint planning, unblocking</text>
+      <text x="12" y="52" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">procrastination &amp; daily sparks.</text>
+    </g>
+  </g>
+
+  <!-- CARD 4: ARIA (Iris) -->
+  <g transform="translate(885, 110)">
+    <rect width="255" height="290" rx="14" fill="url(#ariaCard)" stroke="#7C3AED" stroke-opacity="0.5" stroke-width="1.5" />
+    
+    <!-- Avatar Symbol -->
+    <circle cx="48" cy="46" r="24" fill="#4C1D95" stroke="#8B5CF6" stroke-width="1.5" />
+    <text x="48" y="53" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#C4B5FD">R</text>
+    
+    <!-- Title & Tagline -->
+    <text x="86" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="800" fill="#F8FAFC">ARIA</text>
+    <text x="86" y="58" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#C4B5FD" letter-spacing="0.5">THE BALANCED INTELLIGENCE</text>
+
+    <!-- Color Chip -->
+    <rect x="22" y="86" width="211" height="1" fill="#7C3AED" fill-opacity="0.3" />
+
+    <!-- Trait Tags -->
+    <g transform="translate(22, 100)">
+      <rect width="84" height="20" rx="4" fill="#4C1D95" fill-opacity="0.4" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#DDD6FE">Composure</text>
+
+      <rect x="90" width="121" height="20" rx="4" fill="#4C1D95" fill-opacity="0.4" />
+      <text x="98" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#DDD6FE">Holistic Context</text>
+    </g>
+
+    <!-- Philosophy Quote -->
+    <text x="22" y="148" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      "Sustained mastery is found in
+    </text>
+    <text x="22" y="166" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      balance. We balance ambition with
+    </text>
+    <text x="22" y="184" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-style="italic" fill="#CBD5E1">
+      durability and mental calm."
+    </text>
+
+    <!-- Best For Box -->
+    <g transform="translate(22, 210)">
+      <rect width="211" height="64" rx="8" fill="#130B24" stroke="#7C3AED" stroke-width="1" />
+      <text x="12" y="20" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#C4B5FD">IDEAL ENGAGEMENT</text>
+      <text x="12" y="38" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">Everyday dialogue, longitudinal</text>
+      <text x="12" y="52" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#94A3B8">reflections &amp; career vision.</text>
+    </g>
+  </g>
+</svg>

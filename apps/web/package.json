@@ -1,0 +1,32 @@
+{
+  "name": "@niva/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NIVA Web Frontend (Next.js)",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@niva/config": "workspace:*",
+    "@niva/shared-types": "workspace:*",
+    "@niva/validation": "workspace:*",
+    "clsx": "^2.1.1",
+    "next": "15.5.29",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  }
+}

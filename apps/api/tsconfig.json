@@ -1,0 +1,53 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "declaration": false,
+    "declarationMap": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@niva/shared-types": [
+        "../../packages/shared-types/dist/index",
+        "../../packages/shared-types/src/index"
+      ],
+      "@niva/shared-types/*": [
+        "../../packages/shared-types/dist/*",
+        "../../packages/shared-types/src/*"
+      ],
+      "@niva/validation": [
+        "../../packages/validation/dist/index",
+        "../../packages/validation/src/index"
+      ],
+      "@niva/validation/*": [
+        "../../packages/validation/dist/*",
+        "../../packages/validation/src/*"
+      ],
+      "@niva/config": [
+        "../../packages/config/dist/index",
+        "../../packages/config/src/index"
+      ],
+      "@niva/config/*": [
+        "../../packages/config/dist/*",
+        "../../packages/config/src/*"
+      ]
+    },
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "isolatedModules": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
+}

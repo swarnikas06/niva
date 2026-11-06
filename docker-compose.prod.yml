@@ -1,0 +1,190 @@
+# ==============================================================================
+# NIVA — Production Multi-Container Topology (docker-compose.prod.yml)
+# ==============================================================================
+# Full stack production orchestration with isolated private networking.
+# Internal services (Postgres, Redis, FastAPI AI) are NOT exposed to the host/public.
+# Only Web (:3000) and API (:4000) are published or placed behind a reverse proxy.
+# ==============================================================================
+
+name: niva-prod
+
+services:
+  # ----------------------------------------------------------------------------
+  # 1. State Store: PostgreSQL 16 + pgvector
+  # ----------------------------------------------------------------------------
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: niva-prod-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-niva_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Database password required}
+      POSTGRES_DB: ${POSTGRES_DB:-niva_db}
+    expose:
+      - "5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infrastructure/docker/init-pgvector.sql:/docker-entrypoint-initdb.d/01-init-pgvector.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-niva_user} -d ${POSTGRES_DB:-niva_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - niva-backend-network
+
+  # ----------------------------------------------------------------------------
+  # 2. Distributed Cache & Lock: Redis 7.2
+  # ----------------------------------------------------------------------------
+  redis:
+    image: redis:7.2-alpine
+    container_name: niva-prod-redis
+    restart: always
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD:-niva_secure_redis_pwd}"]
+    expose:
+      - "6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-niva_secure_redis_pwd}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - niva-backend-network
+
+  # ----------------------------------------------------------------------------
+  # 3. AI Service: FastAPI Python (Strictly Internal Networking)
+  # ----------------------------------------------------------------------------
+  ai:
+    build:
+      context: .
+      dockerfile: apps/ai/Dockerfile
+    image: niva-prod-ai:latest
+    container_name: niva-prod-ai
+    restart: always
+    environment:
+      NODE_ENV: production
+      LOG_LEVEL: INFO
+      AI_PORT: 8000
+      NIVA_INTERNAL_SECRET: ${NIVA_INTERNAL_SECRET:?Internal secret required}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:?Gemini API key required}
+      DEFAULT_AI_PROVIDER: ${DEFAULT_AI_PROVIDER:-gemini}
+      AI_MODEL_NAME: ${AI_MODEL_NAME:-gemini-3.8-flash}
+      AI_EMBEDDING_MODEL_NAME: ${AI_EMBEDDING_MODEL_NAME:-gemini-embedding-001}
+      AI_QUOTA_COOLDOWN_SECONDS: ${AI_QUOTA_COOLDOWN_SECONDS:-300}
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/live"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - niva-backend-network
+      - niva-egress-network
+
+  # ----------------------------------------------------------------------------
+  # 4. Backend API: NestJS
+  # ----------------------------------------------------------------------------
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    image: niva-prod-api:latest
+    container_name: niva-prod-api
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ai:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-niva_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-niva_db}?schema=public
+      REDIS_URL: redis://:${REDIS_PASSWORD:-niva_secure_redis_pwd}@redis:6379
+      AI_SERVICE_URL: http://ai:8000
+      NIVA_INTERNAL_SECRET: ${NIVA_INTERNAL_SECRET:?Internal secret required}
+      JWT_SECRET: ${JWT_SECRET:?JWT secret required}
+      COOKIE_SECRET: ${COOKIE_SECRET:?Cookie secret required}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://niva.example.com}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-https://niva.example.com}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      EMAIL_FROM: ${EMAIL_FROM:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-${SMTP_PASS:-}}
+      SMTP_PASS: ${SMTP_PASS:-${SMTP_PASSWORD:-}}
+      ENABLE_LOCAL_EMAIL_CAPTURE: ${ENABLE_LOCAL_EMAIL_CAPTURE:-true}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL:-}
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-mailto:support@niva.ai}
+      TRUST_PROXY: "1"
+    ports:
+      - "${API_PORT:-4000}:4000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:4000/api/v1/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - niva-backend-network
+      - niva-egress-network
+      - niva-public-network
+
+  # ----------------------------------------------------------------------------
+  # 5. Frontend: Next.js 15 PWA
+  # ----------------------------------------------------------------------------
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    image: niva-prod-web:latest
+    container_name: niva-prod-web
+    restart: always
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:4000/api/v1}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      INTERNAL_API_URL: http://api:4000
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - niva-public-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  niva-backend-network:
+    driver: bridge
+    internal: true
+  niva-egress-network:
+    driver: bridge
+  niva-public-network:
+    driver: bridge

@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Foundation Tokens — Flashform Reference Palette */
+    --flash-black: #111606;              /* Deep organic olive-obsidian */
+    --flash-accent: #B1DD40;             /* Electric Lime / Chartreuse */
+    --flash-white: #FFFFFF;              /* Pure White */
+    --flash-red: #E73737;                /* Error/Alert Red */
+    --flash-sage: #C4CCB6;               /* Subdued Sage */
+    --flash-muted: #8A9477;              /* Muted Olive-Slate */
+
+    /* Light Theme (Crisp Parchment White Base with Deep Olive-Charcoal Typography) */
+    --background: 78 30% 98%;            /* #F8FAF3 */
+    --foreground: 79 64% 5%;             /* #111606 Deep Olive Obsidian */
+
+    --surface: 0 0% 100%;                /* #FFFFFF Pure White */
+    --surface-foreground: 79 64% 5%;     /* #111606 */
+
+    --surface-elevated: 78 20% 96%;       /* #F2F5EC */
+    --surface-muted: 78 20% 92%;          /* #E5ECE0 */
+    --surface-hover: 78 25% 88%;          /* #D7E2CE */
+
+    /* Borders */
+    --border: 78 18% 82%;                 /* #C6D2B6 Architectural border */
+    --border-subtle: 78 14% 90%;          /* #DCE4CF */
+    --border-strong: 77 74% 32%;          /* #698C15 Deep Lime Olive */
+
+    /* Primary: Deep Olive Green in Light Mode for WCAG AAA Contrast */
+    --primary: 77 74% 32%;               /* #698C15 */
+    --primary-foreground: 0 0% 100%;     /* #FFFFFF */
+
+    /* Secondary */
+    --secondary: 78 20% 92%;
+    --secondary-foreground: 79 64% 5%;
+
+    /* Muted */
+    --muted: 78 20% 93%;
+    --muted-foreground: 79 20% 36%;      /* #515C3E (>7:1 contrast) */
+
+    /* Accent */
+    --accent: 77 71% 40%;
+    --accent-foreground: 0 0% 100%;
+    --accent-subtle: 77 50% 94%;
+
+    /* Companion Presence */
+    --presence-aura: 77 71% 56%;
+    --presence-dot: 77 71% 56%;
+
+    /* Semantic Feedback */
+    --danger: 0 78% 56%;                 /* #E73737 */
+    --danger-foreground: 0 0% 100%;
+    --danger-subtle: 0 78% 96%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-subtle: 48 96% 96%;
+
+    --success: 142 70% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-subtle: 142 70% 95%;
+
+    --info: 77 74% 32%;
+    --info-foreground: 0 0% 100%;
+    --info-subtle: 77 50% 94%;
+
+    /* Rings & Focus */
+    --ring: 77 74% 32%;
+    --radius: 0.625rem;                  /* 10px baseline matching Flashform */
+  }
+
+  .dark {
+    /* Dark Theme (Dominant Flashform Deep Olive Obsidian #111606 Foundation) */
+    --background: 79 64% 5%;             /* #111606 Flashform Deep Obsidian */
+    --foreground: 78 30% 96%;            /* #F4F7EE Crisp Off-White */
+
+    /* Primary surfaces: subtle olive-tinted dark cards */
+    --surface: 79 48% 7%;                /* #161D09 */
+    --surface-foreground: 78 30% 96%;    /* #F4F7EE */
+
+    /* Elevated surfaces */
+    --surface-elevated: 79 45% 10%;      /* #1E270E */
+    --surface-muted: 79 38% 9%;          /* #19210B */
+    --surface-hover: 79 45% 14%;         /* #263312 */
+
+    /* Borders: refined olive contour lines */
+    --border: 78 40% 18%;                /* #2D3A15 */
+    --border-subtle: 78 35% 12%;         /* #1E260E */
+    --border-strong: 77 71% 56%;         /* #B1DD40 Flashform Accent */
+
+    /* Primary: Flashform Electric Lime #B1DD40 */
+    --primary: 77 71% 56%;               /* #B1DD40 */
+    --primary-foreground: 79 64% 5%;     /* #111606 Deep Olive Obsidian text on primary button */
+
+    /* Secondary */
+    --secondary: 79 30% 14%;             /* #20290F */
+    --secondary-foreground: 78 30% 96%;  /* #F4F7EE */
+
+    /* Muted */
+    --muted: 79 30% 12%;
+    --muted-foreground: 78 18% 62%;      /* #9DAA87 (>7:1 contrast on #111606) */
+
+    /* Accent: Flashform Electric Lime */
+    --accent: 77 71% 56%;               /* #B1DD40 */
+    --accent-foreground: 79 64% 5%;
+    --accent-subtle: 77 40% 14%;
+
+    /* Companion Presence */
+    --presence-aura: 77 71% 56%;        /* Electric Lime */
+    --presence-dot: 77 71% 56%;
+
+    /* Semantic Feedback */
+    --danger: 0 78% 56%;                /* #E73737 */
+    --danger-foreground: 0 0% 100%;
+    --danger-subtle: 0 50% 14%;
+
+    --warning: 42 90% 55%;
+    --warning-foreground: 79 64% 5%;
+    --warning-subtle: 42 40% 14%;
+
+    --success: 77 71% 56%;              /* Electric Lime */
+    --success-foreground: 79 64% 5%;
+    --success-subtle: 77 40% 14%;
+
+    --info: 77 71% 56%;
+    --info-foreground: 79 64% 5%;
+    --info-subtle: 77 40% 14%;
+
+    /* Rings & Focus */
+    --ring: 77 71% 56%;                 /* Electric Lime */
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--background));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Flashform Signature Interactive Utilities */
+@layer utilities {
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))];
+  }
+
+  /* Flashform Editorial Italic Accent Font */
+  .editorial-italic {
+    font-family: 'Newsreader', 'Recife', 'Georgia', 'Cambria', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Flashform Bracket Button Container */
+  .bracket-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .bracket-tag::before {
+    content: '[';
+    opacity: 0.6;
+    margin-right: 0.15rem;
+  }
+
+  .bracket-tag::after {
+    content: ']';
+    opacity: 0.6;
+    margin-left: 0.15rem;
+  }
+}
+
+/* Subtle Restrained Presence Glow */
+@keyframes presence-ping-restrained {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+}
+
+.animate-presence-subtle {
+  animation: presence-ping-restrained 3s ease-in-out infinite;
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

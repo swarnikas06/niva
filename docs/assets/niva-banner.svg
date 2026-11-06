@@ -1,0 +1,251 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 440" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradients -->
+    <radialGradient id="bannerBgGlow" cx="20%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#0E2319" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#070D14" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#04060A" stop-opacity="1" />
+    </radialGradient>
+
+    <radialGradient id="ambientOrb" cx="80%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#1E1B4B" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#070D14" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Emerald-to-Lime Primary Gradient -->
+    <linearGradient id="bannerEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#84CC16" />
+    </linearGradient>
+
+    <linearGradient id="bannerAccentBeam" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#BEF264" />
+    </linearGradient>
+
+    <!-- Glass Surface Gradient -->
+    <linearGradient id="glassSurface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#070E18" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="bannerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Pattern Grid -->
+    <pattern id="matrixGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#10B981" stroke-opacity="0.04" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1280" height="440" fill="url(#bannerBgGlow)" />
+  <rect width="1280" height="440" fill="url(#ambientOrb)" />
+  <rect width="1280" height="440" fill="url(#matrixGrid)" />
+
+  <!-- Outer Border Frame -->
+  <rect width="1278" height="438" x="1" y="1" rx="16" fill="none" stroke="#10B981" stroke-opacity="0.18" stroke-width="1.5" />
+
+  <!-- ================================================================= -->
+  <!-- LEFT COLUMN: BRANDING & VALUE PROPOSITION                         -->
+  <!-- ================================================================= -->
+
+  <!-- Top Pill: Mission / Status -->
+  <g transform="translate(64, 48)">
+    <rect width="260" height="28" rx="14" fill="#061E14" stroke="#10B981" stroke-opacity="0.4" stroke-width="1" />
+    <circle cx="16" cy="14" r="4" fill="#10B981" />
+    <circle cx="16" cy="14" r="7" fill="#10B981" fill-opacity="0.25" />
+    <text x="28" y="18" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" fill="#34D399" letter-spacing="1.5">
+      OPEN SOURCE • SELF-HOSTED AI
+    </text>
+  </g>
+
+  <!-- Product Monogram & Wordmark -->
+  <g transform="translate(64, 96)">
+    <!-- Monogram Graphic -->
+    <g transform="translate(0, 0) scale(0.28)" filter="url(#bannerGlow)">
+      <rect width="256" height="256" rx="56" fill="#081A12" stroke="#10B981" stroke-opacity="0.5" stroke-width="3" />
+      <g transform="translate(48, 48)">
+        <path d="M 0 160 L 0 0 L 34 0 L 34 160 Z" fill="url(#bannerEmerald)" />
+        <path d="M 0 0 L 126 160 L 160 160 L 34 0 Z" fill="url(#bannerAccentBeam)" />
+        <path d="M 126 0 L 160 0 L 160 160 L 126 160 Z" fill="url(#bannerEmerald)" />
+        <polygon points="0,0 34,0 0,44" fill="#A7F3D0" opacity="0.4" />
+        <polygon points="126,160 160,160 160,116" fill="#ECFCCB" opacity="0.4" />
+      </g>
+      <circle cx="208" cy="48" r="8" fill="#BEF264" />
+      <circle cx="208" cy="48" r="16" fill="#10B981" fill-opacity="0.3" />
+    </g>
+
+    <!-- NIVA Wordmark -->
+    <text x="96" y="54" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="58" letter-spacing="4" fill="#F8FAFC">
+      NIV<tspan fill="url(#bannerEmerald)">A</tspan>
+    </text>
+  </g>
+
+  <!-- Tagline: "Your Life, Understood." -->
+  <g transform="translate(64, 204)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="34" letter-spacing="-0.5" fill="#FFFFFF">
+      Your Life, <tspan fill="url(#bannerEmerald)">Understood.</tspan>
+    </text>
+  </g>
+
+  <!-- Description -->
+  <g transform="translate(64, 240)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="400" fill="#94A3B8" letter-spacing="0.1">
+      A persistent personal AI companion that understands context,
+    </text>
+    <text y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="400" fill="#94A3B8" letter-spacing="0.1">
+      remembers what matters, and helps you navigate life with clarity.
+    </text>
+  </g>
+
+  <!-- Core Capability Feature Badges -->
+  <g transform="translate(64, 320)">
+    <!-- Badge 1: Episodic & Semantic Memory -->
+    <g transform="translate(0, 0)">
+      <rect width="176" height="30" rx="8" fill="#091410" stroke="#10B981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#6EE7B7">
+        ✦ Cognitive Memory (pgvector)
+      </text>
+    </g>
+
+    <!-- Badge 2: 4 Personas -->
+    <g transform="translate(186, 0)">
+      <rect width="158" height="30" rx="8" fill="#091410" stroke="#10B981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#6EE7B7">
+        ◈ 4 Grounded Archetypes
+      </text>
+    </g>
+
+    <!-- Badge 3: Proactive Intelligence -->
+    <g transform="translate(354, 0)">
+      <rect width="168" height="30" rx="8" fill="#091410" stroke="#10B981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#6EE7B7">
+        ◉ Proactive Life Scheduler
+      </text>
+    </g>
+
+    <!-- Badge 4: Zero-Cost Stack -->
+    <g transform="translate(0, 40)">
+      <rect width="186" height="30" rx="8" fill="#091410" stroke="#84CC16" stroke-opacity="0.3" stroke-width="1" />
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#BEF264">
+        ◓ Zero-Cost Self-Hosted Stack
+      </text>
+    </g>
+
+    <!-- Badge 5: Native Web Speech -->
+    <g transform="translate(196, 40)">
+      <rect width="164" height="30" rx="8" fill="#091410" stroke="#10B981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#6EE7B7">
+        🎤 Native Voice STT &amp; TTS
+      </text>
+    </g>
+
+    <!-- Badge 6: Fully Verified -->
+    <g transform="translate(370, 40)">
+      <rect width="152" height="30" rx="8" fill="#091410" stroke="#10B981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#34D399">
+        ✓ 472/472 Tests Passing
+      </text>
+    </g>
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- RIGHT COLUMN: INTERACTIVE COMPANION COGNITIVE PREVIEW CARD        -->
+  <!-- ================================================================= -->
+  <g transform="translate(740, 52)">
+    <!-- Main Window Container -->
+    <rect width="476" height="336" rx="16" fill="url(#glassSurface)" stroke="#10B981" stroke-opacity="0.25" stroke-width="1.5" />
+
+    <!-- Window Top Header Bar -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 460 0 C 468.84 0 476 7.16 476 16 L 476 44 L 0 44 Z" fill="#0B1320" />
+    <line x1="0" y1="44" x2="476" y2="44" stroke="#10B981" stroke-opacity="0.15" stroke-width="1" />
+
+    <!-- Window Control Dots -->
+    <circle cx="22" cy="22" r="5" fill="#EF4444" fill-opacity="0.8" />
+    <circle cx="38" cy="22" r="5" fill="#F59E0B" fill-opacity="0.8" />
+    <circle cx="54" cy="22" r="5" fill="#10B981" fill-opacity="0.8" />
+
+    <text x="76" y="26" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#94A3B8">
+      niva-workspace // active-cognitive-frame
+    </text>
+
+    <!-- Right status dot -->
+    <circle cx="452" cy="22" r="4" fill="#10B981" />
+    <circle cx="452" cy="22" r="7" fill="#10B981" fill-opacity="0.25" />
+
+    <!-- Card Content: Cognitive State Visualization -->
+    <!-- Archetype Selector Bar -->
+    <g transform="translate(20, 60)">
+      <rect width="436" height="38" rx="8" fill="#080F18" stroke="#1E293B" stroke-width="1" />
+      
+      <!-- ATLAS (Sapphire) -->
+      <g transform="translate(12, 9)">
+        <circle cx="10" cy="10" r="7" fill="#2563EB" />
+        <text x="24" y="14" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#93C5FD">ATLAS</text>
+      </g>
+      
+      <!-- MIRA (Emerald) Selected -->
+      <g transform="translate(118, 5)">
+        <rect width="96" height="28" rx="6" fill="#064E3B" fill-opacity="0.5" stroke="#10B981" stroke-width="1" />
+        <circle cx="14" cy="14" r="7" fill="#059669" />
+        <text x="28" y="18" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#6EE7B7">MIRA</text>
+      </g>
+      
+      <!-- NOVA (Amber) -->
+      <g transform="translate(230, 9)">
+        <circle cx="10" cy="10" r="7" fill="#D97706" />
+        <text x="24" y="14" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#FDE68A">NOVA</text>
+      </g>
+      
+      <!-- ARIA (Iris) -->
+      <g transform="translate(336, 9)">
+        <circle cx="10" cy="10" r="7" fill="#7C3AED" />
+        <text x="24" y="14" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#DDD6FE">ARIA</text>
+      </g>
+    </g>
+
+    <!-- Context Node 1: User Turn -->
+    <g transform="translate(20, 114)">
+      <rect width="436" height="46" rx="8" fill="#0D1826" stroke="#1E293B" stroke-width="1" />
+      <text x="14" y="18" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#94A3B8">USER // 10:20 AM</text>
+      <text x="14" y="34" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#F1F5F9">
+        "I'm implementing Raft leader election with jittered timeouts."
+      </text>
+    </g>
+
+    <!-- Context Node 2: Companion Grounded Turn -->
+    <g transform="translate(20, 172)">
+      <rect width="436" height="74" rx="8" fill="#061A12" stroke="#10B981" stroke-opacity="0.35" stroke-width="1" />
+      <text x="14" y="18" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#34D399">MIRA (THE THOUGHTFUL COMPANION) // GROUNDED</text>
+      <text x="14" y="36" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#E2E8F0">
+        "Heartbeat period must be 1/5th of election timeout to prevent
+      </text>
+      <text x="14" y="52" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#E2E8F0">
+        split votes. How are you randomizing follower windows?"
+      </text>
+    </g>
+
+    <!-- Footer Stats / Persistence Engine -->
+    <g transform="translate(20, 260)">
+      <rect width="436" height="56" rx="8" fill="#060C14" stroke="#10B981" stroke-opacity="0.15" stroke-width="1" />
+      
+      <!-- Metric 1 -->
+      <text x="16" y="24" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600" fill="#64748B">MEMORY VECTOR</text>
+      <text x="16" y="42" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#34D399">768-dim HNSW</text>
+      
+      <!-- Metric 2 -->
+      <text x="148" y="24" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600" fill="#64748B">TICKER / WORKER</text>
+      <text x="148" y="42" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#38BDF8">5s Atomic Claim</text>
+      
+      <!-- Metric 3 -->
+      <text x="290" y="24" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600" fill="#64748B">CROSS-THREAD ISOLATION</text>
+      <text x="290" y="42" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#A3E635">Independent 100%</text>
+    </g>
+  </g>
+</svg>

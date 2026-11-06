@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: NIVA Security & Vulnerability Reporting
+    url: https://github.com/swarnikas06/niva/blob/main/SECURITY.md
+    about: Please report potential security vulnerabilities privately via our security policy.
+  - name: NIVA Discussions & Architecture Questions
+    url: https://github.com/swarnikas06/niva/discussions
+    about: Ask questions, share ideas, and discuss companion capabilities with the community.

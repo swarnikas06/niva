@@ -1,0 +1,25 @@
+{
+  "name": "niva-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NIVA — The Persistent Personal AI Companion",
+  "packageManager": "pnpm@10.23.0",
+  "scripts": {
+    "dev:web": "pnpm --filter @niva/web dev",
+    "dev:api": "pnpm --filter @niva/api start:dev",
+    "build:packages": "pnpm --filter \"@niva/*\" --filter \"!@niva/web\" --filter \"!@niva/api\" build",
+    "build:web": "pnpm --filter @niva/web build",
+    "build:api": "pnpm --filter @niva/api build",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "ci:local": "pnpm typecheck && pnpm audit --prod --audit-level=critical",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}

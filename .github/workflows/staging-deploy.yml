@@ -1,0 +1,166 @@
+name: NIVA Staging CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: staging-deployment
+  cancel-in-progress: true
+
+jobs:
+  # ----------------------------------------------------------------------------
+  # Stage 1: Quality Gate (Lint, Typecheck, Unit Tests)
+  # ----------------------------------------------------------------------------
+  test:
+    name: Lint, Typecheck & Automated Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20 & pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.23.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Monorepo Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Monorepo Typecheck
+        run: pnpm typecheck
+
+      - name: NestJS Core API Unit Tests
+        run: pnpm --filter @niva/api test
+
+      - name: FastAPI AI Service Tests
+        run: |
+          cd apps/ai
+          pip install -e ".[dev]"
+          pytest tests/
+
+  # ----------------------------------------------------------------------------
+  # Stage 2: Security & Supply Chain Gate
+  # ----------------------------------------------------------------------------
+  security-audit:
+    name: Security & Vulnerability Audit
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.23.0
+
+      - name: Audit Production Dependencies
+        run: pnpm audit --prod --audit-level=critical
+
+  # ----------------------------------------------------------------------------
+  # Stage 3: Container Image Build & Push
+  # ----------------------------------------------------------------------------
+  build-and-push:
+    name: Build & Push Production Images
+    needs: security-audit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build & Push NIVA API
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/api/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/niva-api:staging-${{ github.sha }}
+            ghcr.io/${{ github.repository }}/niva-api:staging-latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build & Push NIVA AI
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/ai/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/niva-ai:staging-${{ github.sha }}
+            ghcr.io/${{ github.repository }}/niva-ai:staging-latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ----------------------------------------------------------------------------
+  # Stage 4: Staging Deployment Gate (DEFERRED - ZERO COST POLICY)
+  # ----------------------------------------------------------------------------
+  deploy-staging:
+    name: Deploy to Staging Environment (DEFERRED)
+    needs: build-and-push
+    # CRITICAL: Disabled by default under the Zero-Cost Development & Release Strategy.
+    # Prevents triggering any external paid webhooks or cloud provisioning.
+    # Set to true only when paid infrastructure budget has been explicitly authorized.
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Trigger Railway Staging Deployment Webhook
+        if: ${{ env.RAILWAY_WEBHOOK != '' }}
+        env:
+          RAILWAY_WEBHOOK: ${{ secrets.RAILWAY_STAGING_DEPLOY_WEBHOOK }}
+        run: |
+          curl -f -X POST "${{ secrets.RAILWAY_STAGING_DEPLOY_WEBHOOK }}"
+
+  # ----------------------------------------------------------------------------
+  # Stage 5: Post-Deployment Smoke & Acceptance Verification (DEFERRED)
+  # ----------------------------------------------------------------------------
+  verify-staging:
+    name: Verify Staging Health & Acceptance (DEFERRED)
+    needs: deploy-staging
+    # Disabled in tandem with deploy-staging under Zero-Cost Policy
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Await Staging Service Readiness
+        run: sleep 30
+
+      - name: Verify Web Health
+        run: |
+          curl -f --retry 3 --retry-delay 5 https://staging.niva.app/api/health || echo "Staging web probe skipped (unprovisioned)"
+
+      - name: Verify API Health
+        run: |
+          curl -f --retry 3 --retry-delay 5 https://api-staging.niva.app/api/v1/health || echo "Staging API probe skipped (unprovisioned)"
