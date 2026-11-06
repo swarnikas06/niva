@@ -13,7 +13,9 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const isProd = configService.get<string>('NODE_ENV') === 'production';
-  const port = configService.get<number>('API_PORT', 4000);
+  const port =
+    configService.get<number>('PORT') ||
+    configService.get<number>('API_PORT', 4000);
   const corsOrigins = configService.get<string>(
     'CORS_ALLOWED_ORIGINS',
     'http://localhost:3000',
