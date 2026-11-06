@@ -12,10 +12,17 @@ import { ExpressAdapter } from '@nestjs/platform-express';
 // Explicit runtime module references for Vercel serverless dependency tracing
 import '@nestjs/jwt';
 import '@nestjs/passport';
+import 'passport';
 import 'passport-jwt';
 import 'pg';
 import 'ioredis';
 import 'drizzle-orm';
+import 'drizzle-orm/node-postgres';
+import 'google-auth-library';
+import 'bcrypt';
+import 'nodemailer';
+import 'web-push';
+import 'swagger-ui-express';
 
 let cachedApp: INestApplication | null = null;
 let expressInstance: any = null;
