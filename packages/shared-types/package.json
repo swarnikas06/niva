@@ -12,7 +12,7 @@
     }
   },
   "scripts": {
-    "build": "tsc -b",
+    "build": "tsc -b && node scripts/generate-runtime.js",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist"
   },

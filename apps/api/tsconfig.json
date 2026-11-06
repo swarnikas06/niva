@@ -15,10 +15,10 @@
     "baseUrl": "./",
     "paths": {
       "@niva/shared-types": [
-        "../../packages/shared-types/src/index"
+        "../../packages/shared-types/dist/index"
       ],
       "@niva/shared-types/*": [
-        "../../packages/shared-types/src/*"
+        "../../packages/shared-types/dist/*"
       ],
       "@niva/validation": [
         "../../packages/validation/src/index"

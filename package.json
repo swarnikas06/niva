@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "NIVA — The Persistent Personal AI Companion",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "packageManager": "pnpm@10.23.0",
   "scripts": {
     "dev:web": "pnpm --filter @niva/web dev",
@@ -10,7 +13,7 @@
     "build:packages": "pnpm --filter \"@niva/*\" --filter \"!@niva/web\" --filter \"!@niva/api\" build",
     "build:web": "pnpm --filter @niva/web build",
     "build:api": "pnpm --filter @niva/api build",
-    "build": "pnpm -r build",
+    "build": "pnpm build:packages && pnpm --filter @niva/api build && pnpm --filter @niva/web build",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint",

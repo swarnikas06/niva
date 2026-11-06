@@ -9,6 +9,14 @@ import cookieParser from 'cookie-parser';
 import express, { Request, Response } from 'express';
 import { ExpressAdapter } from '@nestjs/platform-express';
 
+// Explicit runtime module references for Vercel serverless dependency tracing
+import '@nestjs/jwt';
+import '@nestjs/passport';
+import 'passport-jwt';
+import 'pg';
+import 'ioredis';
+import 'drizzle-orm';
+
 let cachedApp: INestApplication | null = null;
 let expressInstance: any = null;
 
