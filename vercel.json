@@ -7,7 +7,6 @@
     },
     "api": {
       "root": "apps/api",
-      "framework": "nest",
       "bindings": [
         {
           "type": "service",

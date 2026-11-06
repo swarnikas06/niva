@@ -15,27 +15,21 @@
     "baseUrl": "./",
     "paths": {
       "@niva/shared-types": [
-        "../../packages/shared-types/dist/index",
         "../../packages/shared-types/src/index"
       ],
       "@niva/shared-types/*": [
-        "../../packages/shared-types/dist/*",
         "../../packages/shared-types/src/*"
       ],
       "@niva/validation": [
-        "../../packages/validation/dist/index",
         "../../packages/validation/src/index"
       ],
       "@niva/validation/*": [
-        "../../packages/validation/dist/*",
         "../../packages/validation/src/*"
       ],
       "@niva/config": [
-        "../../packages/config/dist/index",
         "../../packages/config/src/index"
       ],
       "@niva/config/*": [
-        "../../packages/config/dist/*",
         "../../packages/config/src/*"
       ]
     },
