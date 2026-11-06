@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { NivaIcon } from '@/components/ui/niva-logo';
+import { NivaIcon, NivaWordmark } from '@/components/ui/niva-logo';
 
 export function CompanionPresence({
   size = 'md',
@@ -74,12 +74,7 @@ export function CompanionPresence({
       {showGreeting && (
         <div className="flex flex-col text-left">
           <div className="flex items-center gap-2">
-            <span className="font-extrabold text-sm tracking-[0.16em] text-foreground uppercase flex items-center">
-              NIV
-              <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-lime-400 bg-clip-text text-transparent">
-                A
-              </span>
-            </span>
+            <NivaWordmark height={14} showTagline={false} />
             <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/25 text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               ONLINE

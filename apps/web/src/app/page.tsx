@@ -6,7 +6,7 @@ import { useAuth } from '@/components/auth/auth-provider';
 import { authFetch } from '@/lib/auth-client';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { NivaIcon } from '@/components/ui/niva-logo';
+import { NivaIcon, NivaSymbol, NivaWordmark } from '@/components/ui/niva-logo';
 import type {
   ConversationDto,
   ConversationPage as ConversationPageDto,
@@ -70,14 +70,8 @@ function PublicLandingView() {
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 focus-ring rounded-lg">
-            <NivaIcon className="w-8 h-8 rounded-lg shadow-subtle shrink-0" />
-            <span className="font-extrabold text-sm tracking-[0.16em] text-foreground uppercase flex items-center">
-              NIV
-              <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-lime-400 bg-clip-text text-transparent">
-                A
-              </span>
-              <span className="text-primary font-mono text-[10px] ml-1">®</span>
-            </span>
+            <NivaSymbol size="sm" />
+            <NivaWordmark height={16} showTagline={false} />
           </Link>
 
           {/* Navigation Links */}
@@ -340,15 +334,8 @@ function PublicLandingView() {
       <footer className="border-t border-border bg-surface py-12 px-4 sm:px-8">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <NivaIcon className="w-8 h-8 rounded-lg shadow-subtle shrink-0" />
-            <div>
-              <span className="font-extrabold text-xs uppercase tracking-wider text-foreground block">
-                NIVA Companion
-              </span>
-              <span className="text-[10px] text-muted-foreground font-mono">
-                Your Life, Understood.
-              </span>
-            </div>
+            <NivaSymbol size="sm" />
+            <NivaWordmark height={20} showTagline={true} />
           </div>
 
           <div className="flex items-center gap-4">

@@ -116,20 +116,23 @@ NIVA features four distinct companion personalities. You can switch personas dyn
 
 ## Brand Identity & Design System
 
-NIVA's official visual identity is anchored by the **Neural N** monogram — an interconnected geometric ribbon representing the seamless continuum of thought, human memory, and proactive artificial intelligence.
+NIVA's official visual identity is anchored by the **Neural N** ribbon monogram and glowing 4-point star — an interconnected 3D continuous form in deep forest-green and luminous lime gradients representing the seamless continuum of thought, human memory, and proactive artificial intelligence.
 
 <p align="center">
-  <img src="docs/assets/niva-icon-512.png" alt="NIVA Neural N App Icon" width="160" />
+  <img src="docs/assets/niva-primary-dark.png" alt="NIVA Official Brand Identity" width="280" />
 </p>
 
 | Asset | Format | Target Context | Description |
 | :--- | :--- | :--- | :--- |
-| [**`niva-logo.svg`**](docs/assets/niva-logo.svg) | Scalable Vector | Primary Horizontal Wordmark | Neural N symbol + tracked typography + "Your Life, Understood" tagline. |
-| [**`niva-logo-dark.svg`**](docs/assets/niva-logo-dark.svg) | Scalable Vector | Dark Theme Surfaces | High-contrast white lettering (`#F8FAFC`) with glowing emerald-to-lime accents. |
-| [**`niva-logo-light.svg`**](docs/assets/niva-logo-light.svg) | Scalable Vector | Light Theme Surfaces | Slate lettering (`#0F172A`) with deep forest emerald and rich cyan gradients. |
-| [**`niva-symbol.svg`**](docs/assets/niva-symbol.svg) | Scalable Vector | Standalone Mark | Transparent continuous ribbon monogram with zero background. |
-| [**`niva-icon.svg`**](docs/assets/niva-icon.svg) | Scalable Vector | Application Icon | Midnight squircle container (`#0D131F` -> `#04060A`) with subtle perimeter border. |
+| [**`niva-primary.svg`**](docs/assets/niva-primary.svg) | Scalable Vector | Master Primary Brand Composition | Ribbon Neural N symbol + 4-point star + distinctive geometric wordmark with lime accent in 'A' + tagline *"Your Life, Understood."* on dark olive-black squircle container (`#0A0F08`). |
+| [**`niva-primary-dark.png`**](docs/assets/niva-primary-dark.png) | Lossless PNG (1024×1024) | High-Resolution Master Display | Pristine 1024×1024 master brand graphic for documentation, app stores, and media showcases. |
+| [**`niva-symbol.svg`**](docs/assets/niva-symbol.svg) | Scalable Vector | Standalone Mark | Transparent ribbon Neural N symbol with 4-point warm-white star and radiant lime halo. |
+| [**`niva-wordmark.svg`**](docs/assets/niva-wordmark.svg) | Scalable Vector | Distinctive Wordmark | Custom geometric letterforms with warm-white typography and floating lime triangle accent inside the counterspace of the `A`. |
+| [**`niva-icon.svg`**](docs/assets/niva-icon.svg) | Scalable Vector | Application Icon | Dark olive-black squircle container with perimeter highlight stroke and centered ribbon mark. |
+| [**`niva-app-icon-512.png`**](docs/assets/niva-app-icon-512.png) / [**`1024`**](docs/assets/niva-app-icon-1024.png) | Lossless PNG | App Store & OS Docks | Master application icons rasterized at 512×512 and 1024×1024. |
 | [**`favicon.svg`**](apps/web/public/favicon.svg) / [**`.ico`**](apps/web/public/favicon.ico) | Vector & Multi-ICO | Browser Tabs & PWA | Universal tab icon optimized for crisp legibility at 16px, 32px, and 48px. |
+| [**`niva-banner.svg`**](docs/assets/niva-banner.svg) | Scalable Vector (1280×440) | GitHub Header Banner | Hero repository banner with brand symbol, wordmark, tagline, and architectural capability badges. |
+| [**`niva-social-preview.svg`**](docs/assets/niva-social-preview.svg) | Scalable Vector (1280×640) | Social & Open Graph Card | Social media preview card for repository embeds and external links. |
 
 ---
 
