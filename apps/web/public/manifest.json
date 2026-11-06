@@ -4,11 +4,17 @@
   "description": "A persistent personal AI companion that understands your life over time.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#09090b",
-  "theme_color": "#d97706",
+  "background_color": "#0A0D14",
+  "theme_color": "#10B981",
   "orientation": "portrait-primary",
   "scope": "/",
   "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "/icons/icon-180x180.png",
       "sizes": "180x180",

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { NivaIcon } from '@/components/ui/niva-logo';
 
 export function CompanionPresence({
   size = 'md',
@@ -37,9 +38,9 @@ export function CompanionPresence({
   }, []);
 
   const badgeSizes = {
-    sm: 'w-7 h-7 text-xs',
-    md: 'w-9 h-9 text-sm',
-    lg: 'w-12 h-12 text-base',
+    sm: 'w-7 h-7',
+    md: 'w-9 h-9',
+    lg: 'w-12 h-12',
   };
 
   const dotSizes = {
@@ -50,19 +51,19 @@ export function CompanionPresence({
 
   return (
     <div className={cn('flex items-center gap-3 select-none', className)}>
-      {/* Precision Presence Monogram Mark */}
+      {/* Official NIVA Neural N App Icon Mark */}
       <div className="relative flex items-center justify-center flex-shrink-0">
         <div
           className={cn(
-            'relative rounded-lg bg-[#111606] text-[#B1DD40] font-black border border-[#B1DD40]/30 flex items-center justify-center tracking-tighter shadow-subtle',
+            'relative rounded-xl overflow-hidden shadow-subtle flex items-center justify-center shrink-0',
             badgeSizes[size],
           )}
         >
-          <span>N</span>
-          {/* Flashform Electric Lime Presence Indicator */}
+          <NivaIcon className="w-full h-full" />
+          {/* Active Presence Dot */}
           <span
             className={cn(
-              'absolute -top-0.5 -right-0.5 rounded-full bg-[#B1DD40] ring-2 ring-background',
+              'absolute top-0.5 right-0.5 rounded-full bg-[#10B981] ring-2 ring-background z-10',
               dotSizes[size],
             )}
             title="Companion Active"
@@ -73,12 +74,15 @@ export function CompanionPresence({
       {showGreeting && (
         <div className="flex flex-col text-left">
           <div className="flex items-center gap-2">
-            <span className="font-extrabold text-sm tracking-tight text-foreground uppercase">
-              NIVA
+            <span className="font-extrabold text-sm tracking-[0.16em] text-foreground uppercase flex items-center">
+              NIV
+              <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-lime-400 bg-clip-text text-transparent">
+                A
+              </span>
             </span>
-            <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded bg-primary/15 border border-primary/30 text-[10px] font-mono font-bold text-primary tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              PRESENT
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/25 text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              ONLINE
             </span>
           </div>
           {timeGreeting && (

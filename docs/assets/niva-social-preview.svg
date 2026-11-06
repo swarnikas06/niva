@@ -7,17 +7,31 @@
       <stop offset="100%" stop-color="#030508" stop-opacity="1" />
     </radialGradient>
 
-    <!-- Emerald Primary Gradient -->
+    <!-- Neural N Gradients -->
+    <linearGradient id="socialLeft" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="60%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+
+    <linearGradient id="socialDiag" x1="10%" y1="10%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="42%" stop-color="#06B6D4" />
+      <stop offset="82%" stop-color="#14B8A6" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+
+    <linearGradient id="socialRight" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0D9488" />
+      <stop offset="45%" stop-color="#10B981" />
+      <stop offset="85%" stop-color="#84CC16" />
+      <stop offset="100%" stop-color="#A3E635" />
+    </linearGradient>
+
     <linearGradient id="socialEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#34D399" />
       <stop offset="50%" stop-color="#10B981" />
       <stop offset="100%" stop-color="#84CC16" />
-    </linearGradient>
-
-    <linearGradient id="socialBeam" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#047857" />
-      <stop offset="50%" stop-color="#10B981" />
-      <stop offset="100%" stop-color="#BEF264" />
     </linearGradient>
 
     <!-- Glow Filter -->
@@ -39,18 +53,14 @@
 
   <!-- Center Emblem Composition -->
   <g transform="translate(640, 210)" text-anchor="middle">
-    <!-- Glowing Icon -->
-    <g transform="translate(-56, -140) scale(0.44)" filter="url(#socialGlow)">
-      <rect width="256" height="256" rx="56" fill="#081A12" stroke="#10B981" stroke-opacity="0.6" stroke-width="3" />
-      <g transform="translate(48, 48)">
-        <path d="M 0 160 L 0 0 L 34 0 L 34 160 Z" fill="url(#socialEmerald)" />
-        <path d="M 0 0 L 126 160 L 160 160 L 34 0 Z" fill="url(#socialBeam)" />
-        <path d="M 126 0 L 160 0 L 160 160 L 126 160 Z" fill="url(#socialEmerald)" />
-        <polygon points="0,0 34,0 0,44" fill="#A7F3D0" opacity="0.4" />
-        <polygon points="126,160 160,160 160,116" fill="#ECFCCB" opacity="0.4" />
+    <!-- Official Neural N Monogram Icon -->
+    <g transform="translate(-64, -140) scale(0.25)">
+      <rect x="8" y="8" width="496" height="496" rx="112" fill="#070A10" stroke="#10B981" stroke-opacity="0.45" stroke-width="6" />
+      <g transform="translate(32, 32) scale(0.875)">
+        <path d="M 96 400 C 96 411, 105 420, 116 420 L 148 420 C 159 420, 168 411, 168 400 L 168 184 L 96 112 Z" fill="url(#socialLeft)" />
+        <path d="M 96 112 C 96 100, 106 92, 118 92 L 148 92 C 160 92, 172 98, 180 108 L 396 364 C 406 376, 416 388, 416 400 C 416 412, 406 420, 394 420 L 364 420 C 352 420, 340 414, 332 404 L 116 148 C 106 136, 96 124, 96 112 Z" fill="url(#socialDiag)" />
+        <path d="M 344 328 L 416 400 L 416 112 C 416 101, 407 92, 396 92 L 364 92 C 353 92, 344 101, 344 112 Z" fill="url(#socialRight)" />
       </g>
-      <circle cx="208" cy="48" r="8" fill="#BEF264" />
-      <circle cx="208" cy="48" r="16" fill="#10B981" fill-opacity="0.3" />
     </g>
 
     <!-- NIVA Title -->

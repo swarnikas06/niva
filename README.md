@@ -114,6 +114,25 @@ NIVA features four distinct companion personalities. You can switch personas dyn
 
 ---
 
+## Brand Identity & Design System
+
+NIVA's official visual identity is anchored by the **Neural N** monogram — an interconnected geometric ribbon representing the seamless continuum of thought, human memory, and proactive artificial intelligence.
+
+<p align="center">
+  <img src="docs/assets/niva-icon-512.png" alt="NIVA Neural N App Icon" width="160" />
+</p>
+
+| Asset | Format | Target Context | Description |
+| :--- | :--- | :--- | :--- |
+| [**`niva-logo.svg`**](docs/assets/niva-logo.svg) | Scalable Vector | Primary Horizontal Wordmark | Neural N symbol + tracked typography + "Your Life, Understood" tagline. |
+| [**`niva-logo-dark.svg`**](docs/assets/niva-logo-dark.svg) | Scalable Vector | Dark Theme Surfaces | High-contrast white lettering (`#F8FAFC`) with glowing emerald-to-lime accents. |
+| [**`niva-logo-light.svg`**](docs/assets/niva-logo-light.svg) | Scalable Vector | Light Theme Surfaces | Slate lettering (`#0F172A`) with deep forest emerald and rich cyan gradients. |
+| [**`niva-symbol.svg`**](docs/assets/niva-symbol.svg) | Scalable Vector | Standalone Mark | Transparent continuous ribbon monogram with zero background. |
+| [**`niva-icon.svg`**](docs/assets/niva-icon.svg) | Scalable Vector | Application Icon | Midnight squircle container (`#0D131F` -> `#04060A`) with subtle perimeter border. |
+| [**`favicon.svg`**](apps/web/public/favicon.svg) / [**`.ico`**](apps/web/public/favicon.ico) | Vector & Multi-ICO | Browser Tabs & PWA | Universal tab icon optimized for crisp legibility at 16px, 32px, and 48px. |
+
+---
+
 ## Product Experience & Interface
 
 NIVA features a modern, responsive interface designed with deep midnight aesthetics, emerald accents, and subtle glassmorphic elevation:

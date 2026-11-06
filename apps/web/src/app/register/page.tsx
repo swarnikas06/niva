@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/components/auth/auth-provider';
 import { Button } from '@/components/ui/button';
+import { NivaIcon } from '@/components/ui/niva-logo';
 import { Input } from '@/components/ui/input';
 
 export default function RegisterPage() {
@@ -68,10 +69,10 @@ export default function RegisterPage() {
       <div className="w-full max-w-md space-y-6">
         {/* Flashform Brand Header */}
         <div className="text-center space-y-2">
-          <Link href="/" className="inline-block focus-ring rounded-lg">
-            <div className="relative inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#111606] border border-primary/30 shadow-surface mb-2">
-              <span className="font-black text-xl tracking-tighter text-primary font-mono">N</span>
-              <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-primary ring-2 ring-background" />
+          <Link href="/" className="inline-block focus-ring rounded-2xl mb-1">
+            <div className="relative inline-flex items-center justify-center">
+              <NivaIcon className="w-14 h-14 rounded-2xl shadow-elevated" />
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#10B981] ring-2 ring-background z-10" />
             </div>
           </Link>
           <p className="text-[10px] font-mono font-bold tracking-[0.2em] text-primary uppercase">

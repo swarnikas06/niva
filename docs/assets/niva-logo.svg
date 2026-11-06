@@ -1,65 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 140" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="100%" height="100%">
   <defs>
-    <!-- Emerald-to-Lime Primary Gradient -->
-    <linearGradient id="logoEmeraldLime" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#34D399" />
-      <stop offset="50%" stop-color="#10B981" />
-      <stop offset="100%" stop-color="#84CC16" />
+    <!-- Left Pillar -->
+    <linearGradient id="darkLeft" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="60%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10B981" />
     </linearGradient>
 
-    <!-- Accent Beam Gradient -->
-    <linearGradient id="logoAccentBeam" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#047857" />
-      <stop offset="60%" stop-color="#10B981" />
+    <!-- Diagonal Traverse -->
+    <linearGradient id="darkDiag" x1="10%" y1="10%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="42%" stop-color="#06B6D4" />
+      <stop offset="82%" stop-color="#14B8A6" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+
+    <!-- Right Pillar -->
+    <linearGradient id="darkRight" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0D9488" />
+      <stop offset="45%" stop-color="#10B981" />
+      <stop offset="85%" stop-color="#84CC16" />
       <stop offset="100%" stop-color="#A3E635" />
     </linearGradient>
 
-    <!-- Glow Filter -->
-    <filter id="logoGlow" x="-10%" y="-10%" width="120%" height="120%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
+    <!-- Accent for letter A -->
+    <linearGradient id="darkAccentA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="50%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#A3E635" />
+    </linearGradient>
   </defs>
 
-  <!-- Background Base (Transparent / Dark Responsive) -->
-  <rect width="680" height="140" rx="20" fill="#0A0D14" fill-opacity="0.9" stroke="#10B981" stroke-opacity="0.15" stroke-width="1.5" />
-
-  <!-- Monogram Icon (Left) -->
-  <g transform="translate(28, 22) scale(0.37)" filter="url(#logoGlow)">
-    <!-- Base Plate -->
-    <rect width="256" height="256" rx="56" fill="#06120D" stroke="#10B981" stroke-opacity="0.4" stroke-width="3" />
-    <!-- Monogram N -->
-    <g transform="translate(48, 48)">
-      <path d="M 0 160 L 0 0 L 34 0 L 34 160 Z" fill="url(#logoEmeraldLime)" />
-      <path d="M 0 0 L 126 160 L 160 160 L 34 0 Z" fill="url(#logoAccentBeam)" />
-      <path d="M 126 0 L 160 0 L 160 160 L 126 160 Z" fill="url(#logoEmeraldLime)" />
-      <polygon points="0,0 34,0 0,44" fill="#A7F3D0" opacity="0.4" />
-      <polygon points="126,160 160,160 160,116" fill="#ECFCCB" opacity="0.4" />
-    </g>
-    <!-- Presence Pulse -->
-    <circle cx="208" cy="48" r="8" fill="#BEF264" />
-    <circle cx="208" cy="48" r="16" fill="#10B981" fill-opacity="0.3" />
+  <!-- Neural N Symbol (Height 80px) -->
+  <g transform="translate(16, 20) scale(0.15625)">
+    <!-- Left Pillar -->
+    <path d="M 96 400 C 96 411, 105 420, 116 420 L 148 420 C 159 420, 168 411, 168 400 L 168 184 L 96 112 Z" fill="url(#darkLeft)" />
+    <!-- Diagonal Traverse -->
+    <path d="M 96 112 C 96 100, 106 92, 118 92 L 148 92 C 160 92, 172 98, 180 108 L 396 364 C 406 376, 416 388, 416 400 C 416 412, 406 420, 394 420 L 364 420 C 352 420, 340 414, 332 404 L 116 148 C 106 136, 96 124, 96 112 Z" fill="url(#darkDiag)" />
+    <!-- Right Pillar -->
+    <path d="M 344 328 L 416 400 L 416 112 C 416 101, 407 92, 396 92 L 364 92 C 353 92, 344 101, 344 112 Z" fill="url(#darkRight)" />
   </g>
 
   <!-- Typography: NIVA Wordmark -->
-  <g transform="translate(148, 72)">
-    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="52" letter-spacing="6" fill="#F8FAFC">
-      NIV<tspan fill="url(#logoEmeraldLime)">A</tspan>
+  <g transform="translate(116, 68)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', 'Helvetica Neue', sans-serif" font-weight="900" font-size="44" letter-spacing="7" fill="#F8FAFC">
+      NIV<tspan fill="url(#darkAccentA)">A</tspan>
     </text>
   </g>
 
-  <!-- Tagline / Subtitle -->
-  <g transform="translate(150, 102)">
-    <text font-family="'JetBrains Mono', 'Fira Code', Menlo, monospace" font-size="12" font-weight="600" letter-spacing="3" fill="#10B981" text-transform="uppercase">
-      Persistent Personal AI Companion
+  <!-- Subtitle Tagline -->
+  <g transform="translate(118, 96)">
+    <text font-family="'JetBrains Mono', 'Fira Code', Menlo, -apple-system, monospace" font-size="11" font-weight="600" letter-spacing="3" fill="#94A3B8">
+      YOUR LIFE, UNDERSTOOD.
     </text>
-  </g>
-
-  <!-- Status Pill / Live Badge (Right) -->
-  <g transform="translate(560, 48)">
-    <rect width="92" height="26" rx="13" fill="#061E14" stroke="#10B981" stroke-opacity="0.35" stroke-width="1" />
-    <circle cx="16" cy="13" r="4" fill="#10B981" />
-    <circle cx="16" cy="13" r="7" fill="#10B981" fill-opacity="0.25" />
-    <text x="28" y="17" font-family="'JetBrains Mono', Menlo, monospace" font-size="10" font-weight="700" fill="#34D399" letter-spacing="1">ONLINE</text>
   </g>
 </svg>

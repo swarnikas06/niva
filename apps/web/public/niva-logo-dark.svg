@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="100%" height="100%">
+  <defs>
+    <!-- Left Pillar -->
+    <linearGradient id="darkLeft" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="60%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+
+    <!-- Diagonal Traverse -->
+    <linearGradient id="darkDiag" x1="10%" y1="10%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="42%" stop-color="#06B6D4" />
+      <stop offset="82%" stop-color="#14B8A6" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+
+    <!-- Right Pillar -->
+    <linearGradient id="darkRight" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0D9488" />
+      <stop offset="45%" stop-color="#10B981" />
+      <stop offset="85%" stop-color="#84CC16" />
+      <stop offset="100%" stop-color="#A3E635" />
+    </linearGradient>
+
+    <!-- Accent for letter A -->
+    <linearGradient id="darkAccentA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="50%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#A3E635" />
+    </linearGradient>
+  </defs>
+
+  <!-- Neural N Symbol (Height 80px) -->
+  <g transform="translate(16, 20) scale(0.15625)">
+    <!-- Left Pillar -->
+    <path d="M 96 400 C 96 411, 105 420, 116 420 L 148 420 C 159 420, 168 411, 168 400 L 168 184 L 96 112 Z" fill="url(#darkLeft)" />
+    <!-- Diagonal Traverse -->
+    <path d="M 96 112 C 96 100, 106 92, 118 92 L 148 92 C 160 92, 172 98, 180 108 L 396 364 C 406 376, 416 388, 416 400 C 416 412, 406 420, 394 420 L 364 420 C 352 420, 340 414, 332 404 L 116 148 C 106 136, 96 124, 96 112 Z" fill="url(#darkDiag)" />
+    <!-- Right Pillar -->
+    <path d="M 344 328 L 416 400 L 416 112 C 416 101, 407 92, 396 92 L 364 92 C 353 92, 344 101, 344 112 Z" fill="url(#darkRight)" />
+  </g>
+
+  <!-- Typography: NIVA Wordmark -->
+  <g transform="translate(116, 68)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', 'Helvetica Neue', sans-serif" font-weight="900" font-size="44" letter-spacing="7" fill="#F8FAFC">
+      NIV<tspan fill="url(#darkAccentA)">A</tspan>
+    </text>
+  </g>
+
+  <!-- Subtitle Tagline -->
+  <g transform="translate(118, 96)">
+    <text font-family="'JetBrains Mono', 'Fira Code', Menlo, -apple-system, monospace" font-size="11" font-weight="600" letter-spacing="3" fill="#94A3B8">
+      YOUR LIFE, UNDERSTOOD.
+    </text>
+  </g>
+</svg>

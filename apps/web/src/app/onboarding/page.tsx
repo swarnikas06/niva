@@ -7,6 +7,7 @@ import { authFetch } from '@/lib/auth-client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { LoadingState } from '@/components/ui/loading-state';
+import { NivaIcon } from '@/components/ui/niva-logo';
 import {
   CharacterArchetypeDto,
   PrimaryFocus,
@@ -201,9 +202,9 @@ export default function OnboardingPage() {
       {/* Top Bar */}
       <header className="w-full max-w-2xl mx-auto flex items-center justify-between py-4">
         <div className="flex items-center gap-2.5">
-          <div className="relative w-8 h-8 rounded-lg bg-[#111606] border border-primary/30 shadow-subtle flex items-center justify-center font-black text-xs text-primary font-mono">
-            N
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-primary" />
+          <div className="relative">
+            <NivaIcon className="w-8 h-8 rounded-lg shadow-subtle shrink-0" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#10B981] ring-1 ring-background" />
           </div>
           <span className="text-xs font-mono font-bold tracking-widest uppercase text-foreground">NIVA ONBOARDING</span>
         </div>

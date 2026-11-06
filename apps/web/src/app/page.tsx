@@ -6,6 +6,7 @@ import { useAuth } from '@/components/auth/auth-provider';
 import { authFetch } from '@/lib/auth-client';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { NivaIcon } from '@/components/ui/niva-logo';
 import type {
   ConversationDto,
   ConversationPage as ConversationPageDto,
@@ -20,9 +21,7 @@ export default function RootPage() {
     return (
       <div className="min-h-screen flex items-center justify-center p-6 bg-background text-foreground">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-surface border border-primary/30 flex items-center justify-center text-primary font-mono font-bold animate-pulse">
-            N
-          </div>
+          <NivaIcon className="w-12 h-12 rounded-xl shadow-subtle animate-pulse" />
           <span className="text-xs font-mono text-muted-foreground">Initializing companion...</span>
         </div>
       </div>
@@ -71,11 +70,13 @@ function PublicLandingView() {
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 focus-ring rounded-lg">
-            <div className="w-8 h-8 rounded-lg bg-[#111606] border border-primary/40 flex items-center justify-center text-primary font-black font-mono text-sm shadow-subtle">
-              N
-            </div>
-            <span className="font-black text-sm tracking-tight text-foreground uppercase">
-              NIVA <span className="text-primary font-mono text-xs">®</span>
+            <NivaIcon className="w-8 h-8 rounded-lg shadow-subtle shrink-0" />
+            <span className="font-extrabold text-sm tracking-[0.16em] text-foreground uppercase flex items-center">
+              NIV
+              <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-lime-400 bg-clip-text text-transparent">
+                A
+              </span>
+              <span className="text-primary font-mono text-[10px] ml-1">®</span>
             </span>
           </Link>
 
@@ -339,15 +340,13 @@ function PublicLandingView() {
       <footer className="border-t border-border bg-surface py-12 px-4 sm:px-8">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#111606] border border-primary/40 flex items-center justify-center text-primary font-black font-mono text-sm">
-              N
-            </div>
+            <NivaIcon className="w-8 h-8 rounded-lg shadow-subtle shrink-0" />
             <div>
               <span className="font-extrabold text-xs uppercase tracking-wider text-foreground block">
                 NIVA Companion
               </span>
               <span className="text-[10px] text-muted-foreground font-mono">
-                Persistent Personal Intelligence
+                Your Life, Understood.
               </span>
             </div>
           </div>

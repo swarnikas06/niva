@@ -8,6 +8,7 @@ import {
 } from '@niva/shared-types';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { NivaIcon } from '@/components/ui/niva-logo';
 
 interface MockInterviewSessionProps {
   session: MockEvaluationSessionDto;
@@ -102,9 +103,7 @@ export function MockInterviewSession({
 
         {/* NIVA Companion Voice */}
         <div className="mt-3.5 flex items-start gap-3 text-xs text-muted-foreground bg-surface-muted/60 p-3 rounded-lg border border-border">
-          <div className="w-6 h-6 rounded-md bg-[#111606] border border-primary/30 text-primary flex items-center justify-center font-bold text-xs shrink-0 font-mono">
-            N
-          </div>
+          <NivaIcon className="w-6 h-6 rounded-md shrink-0 mt-0.5" />
           <div>
             <span className="font-bold text-foreground mr-1">NIVA:</span>
             {isCompleted ? (

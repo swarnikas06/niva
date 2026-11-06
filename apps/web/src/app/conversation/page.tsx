@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { CharacterAvatar } from '@/components/character/character-avatar';
+import { NivaIcon } from '@/components/ui/niva-logo';
 import { useSpeechRecognition, useSpeechSynthesis } from '@/hooks/use-speech';
 import type {
   ConversationDto,
@@ -990,9 +991,7 @@ function ConversationPageContent() {
           {!activeConversation ? (
             /* No conversation selected */
             <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-4 max-w-md mx-auto">
-              <div className="w-14 h-14 rounded-2xl bg-[#111606] border border-primary/30 flex items-center justify-center text-lg font-black text-primary font-mono shadow-surface">
-                N
-              </div>
+              <NivaIcon className="w-16 h-16 rounded-2xl shadow-elevated" />
               <div className="space-y-1.5">
                 <h3 className="text-base font-normal text-foreground uppercase tracking-tight">
                   Your Companion Dialogue Space
